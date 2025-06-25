@@ -535,7 +535,7 @@ for X_train, X_test in stratifiedKFolds.split(all_data, all_score2):#kf.split(li
             train_corr, test_corr, test_rmse, test_mae = format_trans(train_corr, test_corr, test_rmse, test_mae)
             train_corr2 = torch.tensor(np.float32(train_corr2)) 
 
-            if 0.7*test_corrf2 + test_corrf <  0.7*test_corr2 +test_corr:
+            if  test_corrf2 + test_corrf <  test_corr2 +test_corr:
                 test_corrf, test_rmsef, test_maef, test_outf, train_outf, train_truef, test_truef, test_outtf, \
                 train_outtf, train_truetf, test_truetf, train_attentionf, train_node_indexf = \
                 thebest(test_corr, rmse_test, MAE_test, test_out, train_out, train_true, test_true, test_outt, train_outt, train_truet, test_truet, train_attention, train_node_index)
@@ -545,11 +545,11 @@ for X_train, X_test in stratifiedKFolds.split(all_data, all_score2):#kf.split(li
                 test_attentionf9 = test_attention9
                 epochf = epoch
                 #save checkpoints
-                #torch.save({
-                #    'epoch': epoch,
-                #    'model_state_dict': model.state_dict(),
-                #    'optimizer_state_dict': optimizer.state_dict(),
-                #}, timefile)
+                torch.save({
+                    'epoch': epoch,
+                    'model_state_dict': model.state_dict(),
+                    'optimizer_state_dict': optimizer.state_dict(),
+                }, timefile)
 
     test_corr_sf, test_rmse_sf, test_mae_sf, test_corr_s, test_rmse_s, test_mae_s = \
     app(test_corr_sf, test_rmse_sf, test_mae_sf, test_corr_s, test_rmse_s, test_mae_s, test_corrf, test_rmsef, test_maef, test_corr, test_rmse, test_mae)
