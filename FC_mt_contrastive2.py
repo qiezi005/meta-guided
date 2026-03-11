@@ -26,7 +26,7 @@ pt_dim = 8
 pt_dim2 = 512
 node_pt_dim = 8
 
-epoch_num = 80
+epoch_num = 40
 lr = 1e-4
 weight_decay = 1e-3
 batch_size = 10
